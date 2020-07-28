@@ -1,7 +1,5 @@
 # Nome do Projeto 
-ou
-<h1 align="center">JRFLIX</h1>
-
+<img src='./src/assets/img/logo.png' alt='JRFLIX' />
 ## Descrição do Projeto
 <p align="center">Projeto sendo desenvolvido durante a <a href="https://www.alura.com.br/imersao-react/">🔗 Imersão React</a> do empresa Alura.</p>
 
