@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 50px;
   color: var(--white);
   border: 1px solid var(--white);
   box-sizing: border-box;
   cursor: pointer;
-
   padding: 16px 24px;
   font-style: normal;
   font-weight: bold;
@@ -23,9 +21,7 @@ export const Container = styled.div`
   &:visited {
     color: var(--white);
   }
-`;
 
-export const ButtonStyle = styled.button`
   @media (max-width: 800px) {
     position: fixed;
     left: 0;
@@ -37,4 +33,7 @@ export const ButtonStyle = styled.button`
     border: 0;
     text-align: center;
   }
+`;
+
+export const ButtonStyle = styled.button`
 `;

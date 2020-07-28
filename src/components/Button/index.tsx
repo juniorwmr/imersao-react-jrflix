@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Container, ButtonStyle } from './styles';
 
 interface Button {
@@ -11,7 +11,7 @@ interface Button {
 const Button: React.FC<Button> = ({ url, name, backgroundColor }) => {
   return (
     <Container style={{ backgroundColor }}>
-      <ButtonStyle as="a" href={url}>{name}</ButtonStyle>
+      <ButtonStyle as={Link} to={url}>{name}</ButtonStyle>
     </Container>
   );
 }

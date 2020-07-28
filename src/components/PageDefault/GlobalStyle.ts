@@ -24,7 +24,9 @@ export const GlobalStyle = createGlobalStyle`
     --backEnd: #00C86F;
   }
 
-  html, body, #root {
+  #root {
+    display: flex;
+    flex-direction: column;
     color: var(--black);
   }
 
