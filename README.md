@@ -4,7 +4,7 @@
 </div>
 
 ## Descrição do Projeto
-<p align="center">Projeto sendo desenvolvido durante a <a href="https://www.alura.com.br/imersao-react/">🔗 Imersão React</a> do empresa Alura.</p>
+<p align="center">Projeto sendo desenvolvido durante a <a href="https://www.alura.com.br/imersao-react/">🔗 Imersão React</a> da empresa Alura.</p>
 
 <h4 align="center"> 
 	🚧  JRFLIX 🚀 Em construção...  🚧
