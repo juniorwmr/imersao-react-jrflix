@@ -1,5 +1,5 @@
 # Nome do Projeto 
-<a href='jrflix-imersao-react.netlify.app/'>
+<a href='https://jrflix-imersao-react.netlify.app/'>
 <div align='center'>
 <img src='./src/assets/img/logo.png' alt='JRFLIX' />
 </div>
