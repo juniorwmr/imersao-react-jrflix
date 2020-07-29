@@ -32,25 +32,33 @@ const Container = styled.ul`
   
   .slick-prev {
     left: -32px;
+    
   }
+
   .slick-next {
     right: 10px;
+  }
+
+  .slick-next:before,
+  .slick-prev:before {
+    color: ${props => props.colors};
+    box-shadow: 0 0 5px 0 #fff;
+    border-radius: 20px;
   }
 `;
 
 
 
-function SliderSlick({ children }) {
+function SliderSlick({ children, arrowColor }) {
   return (
-    <Container>
+    <Container colors={arrowColor}>
       <Slider {...{
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 200,
         centerMode: false,
         variableWidth: true,
-        adaptiveHeight: true
-
+        adaptiveHeight: true,
       }}>
         {children}
       </Slider>
