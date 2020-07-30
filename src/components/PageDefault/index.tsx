@@ -6,7 +6,11 @@ import { Main } from './styles';
 import Menu from '../../components/Menu';
 import Footer from '../../components/Footer';
 
-const PageDefault: React.FC = ({ children }) => {
+interface AuxProps {
+  children: React.ReactNode;
+}
+
+const PageDefault: React.FC<AuxProps> = ({ children })  => {
   return (
     <>
       <Menu />

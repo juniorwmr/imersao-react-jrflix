@@ -3,10 +3,20 @@ import { VideoCardGroupContainer, Title, ExtraLink } from './styles';
 import VideoCard from './components/VideoCard';
 import SliderSlick, { SliderItem } from './components/Slider';
 
-function Carousel({
-  ignoreFirstVideo,
-  category,
-}) {
+interface ICategoria {
+  titulo: string
+  cor: string
+  link_extra: { url : string, text: string }
+  videos: [{ url : string, titulo: string }]
+}
+
+interface IVideoInfo {
+  ignoreFirstVideo: boolean
+  category: ICategoria
+}
+
+const Carousel: React.FC<IVideoInfo> = ({ignoreFirstVideo,
+  category,}) => {
   const categoryTitle = category.titulo;
   const categoryColor = category.cor;
   const categoryExtraLink = category.link_extra;

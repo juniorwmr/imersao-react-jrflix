@@ -3,6 +3,11 @@ import React, { useState } from 'react';
 import PageDefault from '../../components/PageDefault';
 import FormField from '../../components/FormField';
 
+interface ICategoria {
+  name: string
+  description: string
+  color: string
+}
 
 const CadastroCategoria: React.FC = () => {
   const defaultValues = {
@@ -10,7 +15,7 @@ const CadastroCategoria: React.FC = () => {
     description: '',
     color: '#000000'
   }
-  const [categorias, setCategorias] = useState([] as any);
+  const [categorias, setCategorias] = useState<ICategoria[]>();
   const [values, setValues] = useState(defaultValues as any);
 
   // key could be: name, description or color
@@ -32,7 +37,7 @@ const CadastroCategoria: React.FC = () => {
       <h1>Cadastro de values</h1>
       <form onSubmit={(e) => {
         e.preventDefault();
-        setCategorias([...categorias, values])
+        categorias && setCategorias([...categorias, values]);
         setValues(defaultValues);
       }}>
         <FormField
@@ -58,8 +63,8 @@ const CadastroCategoria: React.FC = () => {
         <button type='submit'>Cadastrar Categoria</button>
       </form>
       <div>
-        {categorias.map((categoria: any, index: number) => (
-          <li key={index}>{categoria.name}</li>
+        {categorias?.map((categoria, index) => (
+          <li key={index}>{categoria}</li>
         ))}
       </div>
     </PageDefault >

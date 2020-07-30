@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const ContentAreaContainer = styled.section`
+type Props = {
+  backgroundImage : string
+}
+
+export const ContentAreaContainer: any = styled.section`
   margin-left: 5%;
   margin-right: 5%;
   height: 100%;
@@ -69,7 +73,7 @@ export const BannerMainContainer = styled.section`
   height: 80vh;
   position: relative;
   color: #fff;
-  background-image: ${({ backgroundImage }) => `url(${backgroundImage})`}; 
+  background-image: ${(props : Props) => `url(${props.backgroundImage})`}; 
   background-size: cover;
   background-position: center;
   @media (max-width: 800px) {

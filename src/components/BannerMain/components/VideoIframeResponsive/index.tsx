@@ -2,9 +2,9 @@ import React from 'react';
 
 import { VideoContainer, ResponsiveIframe } from './styles';
 
-function YouTubeIframeResponsive({ youtubeID }) {
+const VideoIframeResponsive: React.FC<{youtubeID: string}> = ( { youtubeID }) => {
   return (
-    <VideoContainer>
+<VideoContainer>
       <ResponsiveIframe
         title="Titulo do Iframe"
         src={`https://www.youtube.com/embed/${youtubeID}?autoplay=0&mute=1`}
@@ -13,7 +13,8 @@ function YouTubeIframeResponsive({ youtubeID }) {
         allowFullScreen
       />
     </VideoContainer>
-  );
+  )
 }
 
-export default YouTubeIframeResponsive;
+export default VideoIframeResponsive;
+

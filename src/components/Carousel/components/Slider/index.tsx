@@ -41,15 +41,18 @@ const Container = styled.ul`
 
   .slick-next:before,
   .slick-prev:before {
-    color: ${props => props.colors};
+    color: ${(props : {colors: string} ) => props.colors};
     box-shadow: 0 0 5px 0 #fff;
     border-radius: 20px;
   }
 `;
 
+interface SliderInfo {
+  children: React.ReactNode
+  arrowColor: string
+}
 
-
-function SliderSlick({ children, arrowColor }) {
+const SliderSlick: React.FC<SliderInfo> = ({ children, arrowColor }) =>  {
   return (
     <Container colors={arrowColor}>
       <Slider {...{
