@@ -16,6 +16,6 @@
 
 - [x] Aula 1 - React Components
 - [x] Aula 2 - Roteamento e state
-- [ ] Aula 3 - 
+- [x] Aula 3 - Formulários reutilizáveis e mais components
 - [ ] Aula 4 - 
 - [ ] Aula 5 - 

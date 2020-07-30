@@ -10,7 +10,7 @@ const Menu: React.FC = () => {
       <Link to='/'>
         <Img src={require('../../assets/img/logo.png')} alt="Logo" />
       </Link>
-      <Button name="Vídeo Novo" url='/cadastro/video' backgroundColor="var(--black);" />
+      <Button name="Vídeo Novo" url='/cadastro/video' backgroundColor="var(--black)" />
     </Nav>
   );
 
