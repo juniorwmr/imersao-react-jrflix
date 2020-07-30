@@ -15,8 +15,8 @@ function Home() {
       />
 
       {
-        categorias.map((item, index) => (
-          <Carousel
+        categorias.map((item, index: number) => (
+          <Carousel 
             ignoreFirstVideo
             category={categorias[index]}
           />

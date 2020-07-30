@@ -6,8 +6,9 @@ import SliderSlick, { SliderItem } from './components/Slider';
 interface ICategoria {
   titulo: string
   cor: string
-  link_extra: { url : string, text: string }
-  videos: [{ url : string, titulo: string }]
+  link?: string
+  link_extra?: { url : string, text: string }
+  videos: Array<{ url : string, titulo: string }>
 }
 
 interface IVideoInfo {
@@ -16,7 +17,7 @@ interface IVideoInfo {
 }
 
 const Carousel: React.FC<IVideoInfo> = ({ignoreFirstVideo,
-  category,}) => {
+  category}) => {
   const categoryTitle = category.titulo;
   const categoryColor = category.cor;
   const categoryExtraLink = category.link_extra;
@@ -36,7 +37,7 @@ const Carousel: React.FC<IVideoInfo> = ({ignoreFirstVideo,
         </>
       )}
       <SliderSlick arrowColor={categoryColor}>
-        {videos.map((video, index) => {
+        {videos?.map((video, index) => {
           if (ignoreFirstVideo && index === 0) {
             return null;
           }
