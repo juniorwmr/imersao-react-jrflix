@@ -1,36 +1,35 @@
 import React from 'react';
 
+import { Wrapper, Label, Input } from './styles';
+
 interface IFormField {
-  name: string,
-  label: string,
-  type: string,
-  value: string | number,
-  onChange?: any | null
+  label: string
+  type: string
+  name: string
+  value: string
+  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
-const FormField: React.FC<IFormField> = ({ name, label, type, value, onChange }) => {
+const FormField: React.FC<IFormField> = ({ label, type, name, value, onChange }) => {
+  const isTypeTextArea = type === 'textarea';
+  const tag = isTypeTextArea ? 'textarea' : 'input';
 
   return (
-    <div>
-      <label htmlFor={name}> {label}
-        {type === 'textarea' ? (
-          <textarea
-            name={name}
-            value={value}
-            onChange={onChange}
-            style={{ color: "black", backgroundColor: "white" }} />
-        ) : (
-            <input
-              type={type}
-              name={name}
-              value={value}
-              onChange={onChange}
-              style={{ color: "black", backgroundColor: "white" }} />
-
-          )}
-      </label>
-    </div>
-  );
-}
+    <Wrapper>
+      <Label>
+        <Input
+          as={tag}
+          value={value}
+          name={name}
+          onChange={onChange}
+          type={type}
+        />
+        <Label.Text>
+          {label}
+        </Label.Text>
+      </Label>
+    </Wrapper>
+  )
+};
 
 export default FormField;

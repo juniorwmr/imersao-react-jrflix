@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import PageDefault from '../../components/PageDefault';
 import FormField from '../../components/FormField';
 
+import { Container, Title, Form, Button } from './styles';
+
 interface ICategoria {
   name: string
   description: string
@@ -15,8 +17,8 @@ const CadastroCategoria: React.FC = () => {
     description: '',
     color: '#000000'
   }
-  const [categorias, setCategorias] = useState<ICategoria[]>();
-  const [values, setValues] = useState(defaultValues as any);
+  const [categorias, setCategorias] = useState<ICategoria[]>([]);
+  const [values, setValues] = useState<ICategoria>(defaultValues);
 
   // key could be: name, description or color
   function setValue(key: any, value: string) {
@@ -34,39 +36,41 @@ const CadastroCategoria: React.FC = () => {
 
   return (
     <PageDefault>
-      <h1>Cadastro de values</h1>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        categorias && setCategorias([...categorias, values]);
-        setValues(defaultValues);
-      }}>
-        <FormField
-          label='Nome da Categoria: '
-          type='text'
-          name='name'
-          value={values.name}
-          onChange={handleChange} />
-        <FormField
-          label='Descricão:'
-          type='textarea'
-          name='description'
-          value={values.description}
-          onChange={handleChange}
-        />
-        <FormField
-          label='Cor:'
-          type='color'
-          name='color'
-          value={values.color}
-          onChange={handleChange}
-        />
-        <button type='submit'>Cadastrar Categoria</button>
-      </form>
-      <div>
-        {categorias?.map((categoria, index) => (
-          <li key={index}>{categoria}</li>
-        ))}
-      </div>
+      <Container>
+        <Title>Cadastro de Categorias</Title>
+        <Form onSubmit={(e) => {
+          e.preventDefault();
+          setCategorias([...categorias, values]);
+          setValues(defaultValues);
+        }}>
+          <FormField
+            label='Nome da Categoria'
+            type='text'
+            name='name'
+            value={values.name}
+            onChange={handleChange} />
+          <FormField
+            label='Descricão'
+            type='textarea'
+            name='description'
+            value={values.description}
+            onChange={handleChange}
+          />
+          <FormField
+            label='Cor'
+            type='color'
+            name='color'
+            value={values.color}
+            onChange={handleChange}
+          />
+          <Button type='submit'>Cadastrar Categoria</Button>
+        </Form>
+        <div>
+          {categorias?.map((categoria, index: number) => (
+            <li key={index}>{categoria.name}</li>
+          ))}
+        </div>
+      </Container>
     </PageDefault >
   );
 }
