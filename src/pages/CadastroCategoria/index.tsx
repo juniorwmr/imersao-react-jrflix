@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import PageDefault from '../../components/PageDefault';
 import FormField from '../../components/FormField';
@@ -6,6 +6,7 @@ import FormField from '../../components/FormField';
 import { Container, Title, Form, Button } from './styles';
 
 interface ICategoria {
+  id: number
   name: string
   description: string
   color: string
@@ -13,6 +14,7 @@ interface ICategoria {
 
 const CadastroCategoria: React.FC = () => {
   const defaultValues = {
+    id: 0,
     name: '',
     description: '',
     color: '#000000'
@@ -34,6 +36,34 @@ const CadastroCategoria: React.FC = () => {
     setValue(target.getAttribute('name'), target.value)
   }
 
+  function addCategory(data: ICategoria) {
+    setTimeout(() => {
+      fetch('http://localhost:3333/categorias', {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(data),
+      }).then(response => response.json()).then((responseJson) => {
+        console.log(responseJson);
+      })
+    }, 2000)
+  }
+
+  function getCategory() {
+    setTimeout(() => {
+      fetch('http://localhost:3333/categorias', {
+        method: 'GET',
+      }).then(response => response.json()).then((responseJson) => {
+        setCategorias(responseJson)
+      })
+    }, 2000)
+  }
+
+  useEffect(() => {
+    getCategory()
+  }, [])
+
   return (
     <PageDefault>
       <Container>
@@ -41,6 +71,7 @@ const CadastroCategoria: React.FC = () => {
         <Form onSubmit={(e) => {
           e.preventDefault();
           setCategorias([...categorias, values]);
+          addCategory(values);
           setValues(defaultValues);
         }}>
           <FormField
@@ -65,11 +96,21 @@ const CadastroCategoria: React.FC = () => {
           />
           <Button type='submit'>Cadastrar Categoria</Button>
         </Form>
-        <div>
-          {categorias?.map((categoria, index: number) => (
-            <li key={index}>{categoria.name}</li>
-          ))}
-        </div>
+        {
+          !categorias.length ? (
+            <div>
+              <h2>Loading...</h2>
+            </div>
+          ) : (
+              <div>
+                {categorias?.map((categoria) => (
+                  <li key={categoria.id}>{categoria.name}</li>
+                ))}
+              </div>
+            )
+        }
+
+
       </Container>
     </PageDefault >
   );

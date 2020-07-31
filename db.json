@@ -2,15 +2,21 @@
   "categorias": [
     {
       "id": 1,
-      "nome": "Front End",
-      "descricao": "Uma categoria bacana",
-      "cor": "#cbd1ff"
+      "name": "Front End",
+      "description": "Uma categoria bacana",
+      "color": "#cbd1ff"
     },
     {
       "id": 2,
-      "nome": "Back End",
-      "descricao": "Uma outra categoria bacana",
-      "cor": "#cbd141"
+      "name": "Back End",
+      "description": "Uma outra categoria bacana",
+      "color": "#cbd141"
+    },
+    {
+      "id": 3,
+      "name": "teste",
+      "description": "teste",
+      "color": "#000000"
     }
   ]
 }
