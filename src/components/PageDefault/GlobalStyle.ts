@@ -32,7 +32,10 @@ export const GlobalStyle = createGlobalStyle`
   *, button, input {
     border: 0;
     background: none;
-    
+  }
+
+  li {
+    list-style-type: none;
   }
 
   html {

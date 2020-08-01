@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 type Props = {
-  backgroundImage : string
+  backgroundImage: string
 }
 
-export const ContentAreaContainer: any = styled.section`
+export const ContentAreaContainer: any = styled.section`  
+  margin-top: 2%;
   margin-left: 5%;
   margin-right: 5%;
   height: 100%;
@@ -14,6 +15,7 @@ export const ContentAreaContainer: any = styled.section`
   position: relative;
   z-index: 10;
   @media (max-width: 800px) {
+    margin-top: 0;
     padding-top: 100px;
     flex-direction: column;
   }
@@ -41,7 +43,6 @@ ContentAreaContainer.Category = styled.h1`
   padding: 25px;
   line-height: 1;
   border-radius: 4px;
-
   @media (max-width: 800px) {
     display: none;
     font-size: 18px;
@@ -62,7 +63,7 @@ ContentAreaContainer.Title = styled.h2`
   line-height: 1;
   margin-top: 0;
   margin-bottom: 32px;
-
+  text-shadow: 2px 2px 2px #000;
   @media (max-width: 800px) {
     font-size: 32px;
     text-align: center;
@@ -70,17 +71,18 @@ ContentAreaContainer.Title = styled.h2`
 `;
 
 export const BannerMainContainer = styled.section`
-  height: 80vh;
+  height: 75vh;
   position: relative;
   color: #fff;
-  background-image: ${(props : Props) => `url(${props.backgroundImage})`}; 
-  background-size: cover;
+  background-image: ${(props: Props) => `url(${props.backgroundImage})`}; 
+   background-size: cover;
   background-position: center;
   @media (max-width: 800px) {
     height: auto;
     min-height: 50vh;
   }
 
+  
   &:after,
   &:before {
     content: "";
@@ -91,16 +93,14 @@ export const BannerMainContainer = styled.section`
     margin: auto;
     height: 20%;
   }
-
   &:before {
     top: 0;
     height: 100%;
     background: rgba(0,0,0,0.5);
   }
-
   &:after {
     bottom: 0;
-    background: linear-gradient(0deg, #141414 0%, transparent 100%);
+    background: linear-gradient(0deg, #050505 0%, transparent 100%);
   }
 `;
 

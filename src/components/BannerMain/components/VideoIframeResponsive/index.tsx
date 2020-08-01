@@ -2,9 +2,9 @@ import React from 'react';
 
 import { VideoContainer, ResponsiveIframe } from './styles';
 
-const VideoIframeResponsive: React.FC<{youtubeID: string}> = ( { youtubeID }) => {
+const VideoIframeResponsive: React.FC<{ youtubeID: string | undefined }> = ({ youtubeID }) => {
   return (
-<VideoContainer>
+    <VideoContainer>
       <ResponsiveIframe
         title="Titulo do Iframe"
         src={`https://www.youtube.com/embed/${youtubeID}?autoplay=0&mute=1`}

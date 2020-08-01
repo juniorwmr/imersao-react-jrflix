@@ -1,49 +1,47 @@
 import React, { useState, useEffect } from 'react';
 
+import useForm from '../../hooks/useForm';
 import PageDefault from '../../components/PageDefault';
 import FormField from '../../components/FormField';
 
 import { Container, Title, Form, Button } from './styles';
 
 interface ICategoria {
-  id: number
-  name: string
-  description: string
+  id?: number
+  title: string
   color: string
+  description: string
+  url: string
 }
 
 const CadastroCategoria: React.FC = () => {
   const defaultValues = {
     id: 0,
-    name: '',
+    title: '',
+    color: '#000000',
     description: '',
-    color: '#000000'
+    url: ''
   }
   const [categorias, setCategorias] = useState<ICategoria[]>([]);
-  const [values, setValues] = useState<ICategoria>(defaultValues);
 
-  // key could be: name, description or color
-  function setValue(key: any, value: string) {
-    setValues({
-      ...values,
-      // changing keys dinamically 
-      [key]: value
-    })
-  }
+  const { values, clearForm, handleChange } = useForm(defaultValues);
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const { target } = event;
-    setValue(target.getAttribute('name'), target.value)
-  }
-
-  function addCategory(data: ICategoria) {
+  function addCategory({ id, title, color, description, url }: ICategoria) {
     setTimeout(() => {
-      fetch('http://localhost:3333/categorias', {
+      fetch('http://localhost:3333/categories', {
         method: 'POST',
         headers: {
           "Content-type": "application/json"
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          id,
+          title,
+          color,
+          link_extra: {
+            description,
+            url
+          }
+        }),
       }).then(response => response.json()).then((responseJson) => {
         console.log(responseJson);
       })
@@ -52,10 +50,11 @@ const CadastroCategoria: React.FC = () => {
 
   function getCategory() {
     setTimeout(() => {
-      fetch('http://localhost:3333/categorias', {
+      fetch('http://localhost:3333/categories', {
         method: 'GET',
       }).then(response => response.json()).then((responseJson) => {
         setCategorias(responseJson)
+        console.log(responseJson);
       })
     }, 2000)
   }
@@ -72,19 +71,26 @@ const CadastroCategoria: React.FC = () => {
           e.preventDefault();
           setCategorias([...categorias, values]);
           addCategory(values);
-          setValues(defaultValues);
+          clearForm();
         }}>
           <FormField
             label='Nome da Categoria'
             type='text'
-            name='name'
-            value={values.name}
+            name='title'
+            value={values.title}
             onChange={handleChange} />
           <FormField
             label='Descricão'
             type='textarea'
             name='description'
             value={values.description}
+            onChange={handleChange}
+          />
+          <FormField
+            label='URL da Categoria'
+            type='text'
+            name='url'
+            value={values.url}
             onChange={handleChange}
           />
           <FormField
@@ -103,14 +109,12 @@ const CadastroCategoria: React.FC = () => {
             </div>
           ) : (
               <div>
-                {categorias?.map((categoria) => (
-                  <li key={categoria.id}>{categoria.name}</li>
+                {categorias?.map((categoria, index: number) => (
+                  <li key={index}>{categoria.title}</li>
                 ))}
               </div>
             )
         }
-
-
       </Container>
     </PageDefault >
   );

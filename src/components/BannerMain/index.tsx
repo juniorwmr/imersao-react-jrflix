@@ -3,20 +3,19 @@ import VideoIframeResponsive from './components/VideoIframeResponsive';
 import { BannerMainContainer, ContentAreaContainer, WatchButton } from './styles';
 
 interface IBannerInfo {
-  videoTitle : string
-  videoDescription : string
-  url : string
+  videoTitle: string | undefined
+  videoDescription: string | undefined
+  url: string | undefined
 }
 
-function getYouTubeId(youtubeURL : string) : string {
-  return youtubeURL
-    .replace(
-      /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/,
-      '$7',
-    );
+function getYouTubeId(youtubeURL: string | undefined) {
+  return youtubeURL?.replace(
+    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/,
+    '$7',
+  );
 }
 
-const BannerMain: React.FC<IBannerInfo> = ({ 
+const BannerMain: React.FC<IBannerInfo> = ({
   videoTitle,
   videoDescription,
   url,

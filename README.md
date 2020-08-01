@@ -18,4 +18,4 @@
 - [x] Aula 2 - Roteamento e state
 - [x] Aula 3 - Formulários reutilizáveis e mais components
 - [x] Aula 4 - Ajax, validação e o back-end
-- [ ] Aula 5 - Gerenciamento de videos com React e JavaScript
+- [x] Aula 5 - Gerenciamento de videos com React e JavaScript

@@ -1,14 +1,15 @@
 import React from 'react';
 import { VideoCardGroupContainer, Title, ExtraLink } from './styles';
 import VideoCard from './components/VideoCard';
-import SliderSlick, { SliderItem } from './components/Slider';
+import SliderSlick from './components/Slider';
+import { SliderItem } from './components/Slider/styles';
 
 interface ICategoria {
-  titulo: string
-  cor: string
+  title: string
+  color: string
   link?: string
-  link_extra?: { url : string, text: string }
-  videos: Array<{ url : string, titulo: string }>
+  link_extra?: { url: string, description: string }
+  videos: Array<{ url: string, title: string }>
 }
 
 interface IVideoInfo {
@@ -16,10 +17,10 @@ interface IVideoInfo {
   category: ICategoria
 }
 
-const Carousel: React.FC<IVideoInfo> = ({ignoreFirstVideo,
-  category}) => {
-  const categoryTitle = category.titulo;
-  const categoryColor = category.cor;
+const Carousel: React.FC<IVideoInfo> = ({ ignoreFirstVideo,
+  category }) => {
+  const categoryTitle = category.title;
+  const categoryColor = category.color;
   const categoryExtraLink = category.link_extra;
   const videos = category.videos;
   return (
@@ -31,7 +32,7 @@ const Carousel: React.FC<IVideoInfo> = ({ignoreFirstVideo,
           </Title>
           {categoryExtraLink &&
             <ExtraLink href={categoryExtraLink.url} target="_blank">
-              {categoryExtraLink.text}
+              {categoryExtraLink.description}
             </ExtraLink>
           }
         </>
@@ -43,13 +44,15 @@ const Carousel: React.FC<IVideoInfo> = ({ignoreFirstVideo,
           }
 
           return (
-            <SliderItem key={video.titulo}>
-              <VideoCard
-                videoTitle={video.titulo}
-                videoURL={video.url}
-                categoryColor={categoryColor}
-              />
-            </SliderItem>
+            <div key={index}>
+              <SliderItem key={video.title}>
+                <VideoCard
+                  videoTitle={video.title}
+                  videoURL={video.url}
+                  categoryColor={categoryColor}
+                />
+              </SliderItem>
+            </div>
           );
         })}
       </SliderSlick>
